@@ -1,0 +1,80 @@
+:root {
+    --primary-text: #1b2632;
+    --primary-header: #005784;
+    --primary-back: #31a2f2;
+    --primary-white: #ccccff;
+    --secondary-header: #eb8931;
+    --secondary-back: #f7e26b;
+    --ancho-default: 720px;
+}
+body{
+    background-color: var(--primary-white);
+}
+/*------------------------------------------------------------*/
+/*-------------------------HEADER-----------------------------*/
+/*------------------------------------------------------------*/
+h1{
+    align-self: center;
+}
+a, ul{
+    text-decoration: none;
+    list-style-type: none;
+    color: var(--primary-white);
+}
+a:hover{
+    color: var(--primary-white);
+    text-decoration: underline;
+}
+header{
+    background-color: var(--primary-header);
+    color: var(--primary-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+}
+ul{
+    display: flex;
+    justify-content: space-between;
+    align-content: baseline;
+    margin-bottom: 0%;
+}
+li{
+    padding-right: 2rem;
+}
+
+
+/*------------------------------------------------------------*/
+/*--------------------------ALTA------------------------------*/
+/*------------------------------------------------------------*/
+section{
+    border-radius: 4px;
+    border: 2px solid var(--primary-back);
+    background-color: var(--primary-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 3px 3px 5px var(--primary-header);
+}
+section h2{
+    width: 100%;
+    background-color: var(--primary-back);
+    color: var(--primary-text);
+    margin: auto;
+    text-align: center;
+}
+form{
+    margin: auto;
+}
+form p{
+    padding: 0;
+    margin: 0;
+}
+input{
+    width: 50vw;
+}
+#buttons{
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
