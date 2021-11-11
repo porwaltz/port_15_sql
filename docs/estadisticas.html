@@ -15,33 +15,32 @@
         <h1>La base App</h1>
         <ul class="fs-5">
             <li class="m-2" >
-                <a href="index.html" class="fw-bold">Alta</a>
+                <a href="index.html" class="">Alta</a>
             </li>
             <li class="m-2" >
                 <a href="usuarios.html"  class="">Usuarios</a>
             </li>
             <li class="m-2" >
-                <a href="estadisticas.html" class="">Estadisticas</a>
+                <a href="estadisticas.html" class="fw-bold">Estadisticas</a>
             </li>
         </ul>
     </header>
     <section class="m-3">
-        <h2 class="p-2">Alta de usuario <i class="fas fa-address-card"></i></h2>
-        <form action="" class="p-3">
-            <p>Nombre</p>
-            <input type="text" placeholder="Ingrese un nombre">
-            <p>apellido</p>
-            <input type="text" placeholder="Ingrese un apellido">
-            <p>Fecha de nacimiento</p>
-            <input type="date" placeholder="Ingrese su fecha de nacimiento">
-            <p>Password</p>
-            <input type="password" placeholder="Ingrese una password">
-        </form>
-        <div id="buttons">
-            <button class="m-2" onclick="location.reload()">CANCELAR</button>
-            <button class="m-2" onclick="">GUARDAR</button>
+        <h2 class="p-2">Estadisticas de usuarios <i class="fas fa-database"></i></h2>
+        <div id="estadísticas">
+            <div id="searchbar">
+                <input type="text" name="" id="" placeholder="ingrese un usuario">
+            </div>
+            <div id="headerRes">
+                <p class="fs-4">Resultados</p> 
+                <p id="total"></p>
+            </div>
+            <div id="resultados" class="m-4 grid-container">
+
+            </div>
+
         </div>
     </section>
-   
+    <script src="estadisticas.js"></script>
 </body>
 </html>

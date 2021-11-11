@@ -31,7 +31,6 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-
 }
 ul{
     display: flex;
@@ -55,6 +54,7 @@ section{
     flex-direction: column;
     justify-content: center;
     box-shadow: 3px 3px 5px var(--primary-header);
+    animation: fadeInHeader 0.6s ease 0s 1 forwards;
 }
 section h2{
     width: 100%;
@@ -65,6 +65,7 @@ section h2{
 }
 form{
     margin: auto;
+    animation: fadeInContainer 0.8s ease 0s 1 forwards;
 }
 form p{
     padding: 0;
@@ -77,4 +78,125 @@ input{
     display: flex;
     justify-content: space-around;
     margin: auto;
+}
+
+
+/*------------------------------------------------------------*/
+/*------------------------USUARIOS----------------------------*/
+/*------------------------------------------------------------*/
+#usuarios{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInContainer 0.8s ease 0s 1 forwards;
+}
+.unUsuario{
+    margin: 1rem;
+    width: 60vw;
+    border: 2px solid var(--primary-back);
+    border-radius: 4px;
+    box-shadow: 3px 3px 5px var(--primary-header);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.unUsuario div{
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.unUsuario div p{
+    margin: 0.5rem;
+    top: 50%;
+}
+
+/*------------------------------------------------------------*/
+/*-------------------------DSCARGAS---------------------------*/
+/*------------------------------------------------------------*/
+#searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+#searchbar input{
+    margin: auto;
+    border: 1px solid var(--primary-header);
+    border-radius: 4px;
+
+}
+
+#headerRes{
+    text-align: center;
+    vertical-align: middle;
+    background-color: var(--primary-back);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#headerRes p{
+    margin: 0.5rem;
+    top: 50%;
+}
+
+
+#resultados{
+    border-radius: 4px;
+    border: 2px solid var(--primary-back);
+    animation: fadeInContainer 0.8s ease 0s 1 forwards;
+}
+
+.grid-container{
+    background-color: var(--primary-back);
+    box-sizing: border-box;
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    gap: 2px
+}
+.grid-item{
+    background-color: var(--primary-white);
+    box-sizing: border-box;
+    top: 50%;
+}
+.grid-h{
+    width: 100%;
+    font-weight: bold;
+    background-color: var(--primary-back);
+}
+.grid-item p{
+    margin: 0.5rem;
+    top: 50%;
+}
+
+
+
+
+/*------------------------------------------------------------*/
+/*-----------------------ANIMACIONES--------------------------*/
+/*------------------------------------------------------------*/
+
+@keyframes fadeInContainer {
+    0% {
+        opacity: 0; transform: translatey(1em);
+    }
+
+    100% {
+        opacity: 1; transform: translatey(0);
+    }
+}
+
+@keyframes fadeInHeader {
+    0%      { opacity: 0; }
+    100%    { opacity: 1; }
+}
+
+@keyframes aparecer {
+    0%      { opacity: 0; transform: translatey(1em); }
+    100%    { opacity: 1; transform: translatey(0); }
 }

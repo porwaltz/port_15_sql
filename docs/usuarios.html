@@ -15,10 +15,10 @@
         <h1>La base App</h1>
         <ul class="fs-5">
             <li class="m-2" >
-                <a href="index.html" class="fw-bold">Alta</a>
+                <a href="index.html" class="">Alta</a>
             </li>
             <li class="m-2" >
-                <a href="usuarios.html"  class="">Usuarios</a>
+                <a href="usuarios.html"  class="fw-bold">Usuarios</a>
             </li>
             <li class="m-2" >
                 <a href="estadisticas.html" class="">Estadisticas</a>
@@ -26,22 +26,12 @@
         </ul>
     </header>
     <section class="m-3">
-        <h2 class="p-2">Alta de usuario <i class="fas fa-address-card"></i></h2>
-        <form action="" class="p-3">
-            <p>Nombre</p>
-            <input type="text" placeholder="Ingrese un nombre">
-            <p>apellido</p>
-            <input type="text" placeholder="Ingrese un apellido">
-            <p>Fecha de nacimiento</p>
-            <input type="date" placeholder="Ingrese su fecha de nacimiento">
-            <p>Password</p>
-            <input type="password" placeholder="Ingrese una password">
-        </form>
-        <div id="buttons">
-            <button class="m-2" onclick="location.reload()">CANCELAR</button>
-            <button class="m-2" onclick="">GUARDAR</button>
+        <h2 class="p-2">Usuarios registrados <i class="fas fa-clipboard-list"></i></h2>
+        <div id="usuarios">
         </div>
     </section>
+
+    <script src="usuarios.js"></script>
    
 </body>
 </html>
