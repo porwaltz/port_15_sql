@@ -27,13 +27,13 @@ request.addEventListener("readystatechange", () =>{
                             <a href="estadisticas.html" onclick="ordenar('/resumen')">Resumen</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar()">Positivo</a>
+                            <a href="estadisticas.html" onclick="ordenar('/positivo')">Positivo</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar()">Negativo
+                            <a href="estadisticas.html" onclick="ordenar('/negativo')">Negativo</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar()">Puntaje</a>
+                            <a href="estadisticas.html" onclick="ordenar('/puntaje')">Puntaje</a>
                         </p></div>
                     `
             jason.forEach( e => {
