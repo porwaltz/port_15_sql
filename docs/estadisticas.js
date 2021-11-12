@@ -39,11 +39,11 @@ request.addEventListener("readystatechange", () =>{
             jason.forEach( e => {
                 user_string += `
 
-                        <div class="grid-item grid-user"><p>${e.usuario_logeado}</p></div>
-                        <div class="grid-item grid-user"><p>${e.resumen_descarga}</p></div>
-                        <div class="grid-item grid-user"><p>${e.resumen_positivo}</p></div>
-                        <div class="grid-item grid-user"><p>${e.resumen_negativo}</p></div>
-                        <div class="grid-item grid-user"><p>${e.puntaje_global}</p></div>
+                        <div class="grid-item"><p class="grid-user">${e.usuario_logeado}</p></div>
+                        <div class="grid-item"><p class="grid-user">${e.resumen_descarga}</p></div>
+                        <div class="grid-item"><p class="grid-user">${e.resumen_positivo}</p></div>
+                        <div class="grid-item"><p class="grid-user">${e.resumen_negativo}</p></div>
+                        <div class="grid-item"><p class="grid-user">${e.puntaje_global}</p></div>
                     `
             })
             document.getElementById("resultados").innerHTML = user_string

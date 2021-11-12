@@ -100,6 +100,121 @@ app.get('/estadisticas', (request, response) => {
     //response.json(descargas)
 })
 
+app.get('/estadisticas/usuario', (request, response) => {
+    
+    connection.connect(function(error){
+        if(error){
+            throw error;
+        }else{
+            console.log('Conexion correcta.');
+        }
+        
+        let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
+        from descarga as d\
+        inner join encuesta as e\
+        on e.id_descarga=d.id_descarga;"
+        connection.query(encuestasUsuarios,function(err,results,fields){
+            if(err) throw err;
+            console.log('¡No hubo errores!');
+            response.json(results)    
+            connection.end();         
+        })
+    })
+    //response.json(descargas)
+})
+
+app.get('/estadisticas/resumen', (request, response) => {
+    
+    connection.connect(function(error){
+        if(error){
+            throw error;
+        }else{
+            console.log('Conexion correcta.');
+        }
+        
+        let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
+        from descarga as d\
+        inner join encuesta as e\
+        on e.id_descarga=d.id_descarga;"
+        connection.query(encuestasUsuarios,function(err,results,fields){
+            if(err) throw err;
+            console.log('¡No hubo errores!');
+            response.json(results)    
+            connection.end();         
+        })
+    })
+    //response.json(descargas)
+})
+
+app.get('/estadisticas/positivo', (request, response) => {
+    
+    connection.connect(function(error){
+        if(error){
+            throw error;
+        }else{
+            console.log('Conexion correcta.');
+        }
+        
+        let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
+        from descarga as d\
+        inner join encuesta as e\
+        on e.id_descarga=d.id_descarga;"
+        connection.query(encuestasUsuarios,function(err,results,fields){
+            if(err) throw err;
+            console.log('¡No hubo errores!');
+            response.json(results)    
+            connection.end();         
+        })
+    })
+    //response.json(descargas)
+})
+
+app.get('/estadisticas/negativo', (request, response) => {
+    
+    connection.connect(function(error){
+        if(error){
+            throw error;
+        }else{
+            console.log('Conexion correcta.');
+        }
+        
+        let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
+        from descarga as d\
+        inner join encuesta as e\
+        on e.id_descarga=d.id_descarga;"
+        connection.query(encuestasUsuarios,function(err,results,fields){
+            if(err) throw err;
+            console.log('¡No hubo errores!');
+            response.json(results)    
+            connection.end();         
+        })
+    })
+    //response.json(descargas)
+})
+
+app.get('/estadisticas/puntaje', (request, response) => {
+    
+    connection.connect(function(error){
+        if(error){
+            throw error;
+        }else{
+            console.log('Conexion correcta.');
+        }
+        
+        let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
+        from descarga as d\
+        inner join encuesta as e\
+        on e.id_descarga=d.id_descarga;"
+        connection.query(encuestasUsuarios,function(err,results,fields){
+            if(err) throw err;
+            console.log('¡No hubo errores!');
+            response.json(results)    
+            connection.end();         
+        })
+    })
+    //response.json(descargas)
+})
+
 app.put('/alta',(request, response) => {
     //connexion con mysql
     //crear la query insert
