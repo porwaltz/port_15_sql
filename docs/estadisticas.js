@@ -1,8 +1,12 @@
-
+if(localStorage.cambio == '0'){
+    localStorage.setItem(('orden', ''))
+}
+else{
+    localStorage.setItem(('cambio', '0'))
+}
 const request = new XMLHttpRequest()
 const url = "http://localhost:3000/estadisticas"
-
-request.open('GET', url)
+request.open('GET', url + localStorage.orden)
 request.send()
 
 
@@ -25,11 +29,11 @@ request.addEventListener("readystatechange", () =>{
             jason.forEach( e => {
                 user_string += `
 
-                        <div class="grid-item"><p>${e.usuario_logeado}</p></div>
-                        <div class="grid-item"><p>${e.resumen_descarga}</p></div>
-                        <div class="grid-item"><p>${e.resumen_positivo}</p></div>
-                        <div class="grid-item"><p>${e.resumen_negativo}</p></div>
-                        <div class="grid-item"><p>${e.puntaje_global}</p></div>
+                        <div class="grid-item grid-user"><p>${e.usuario_logeado}</p></div>
+                        <div class="grid-item grid-user"><p>${e.resumen_descarga}</p></div>
+                        <div class="grid-item grid-user"><p>${e.resumen_positivo}</p></div>
+                        <div class="grid-item grid-user"><p>${e.resumen_negativo}</p></div>
+                        <div class="grid-item grid-user"><p>${e.puntaje_global}</p></div>
                     `
             })
             document.getElementById("resultados").innerHTML = user_string
