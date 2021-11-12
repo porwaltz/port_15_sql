@@ -2,18 +2,26 @@ let express = require('express')
 let mysql = require('mysql')
 let app = express()
 
-let conexion = mysql.createConnection({
+let connection = mysql.createConnection({
     host: 'localhost',
-    database: '',
-    user: 'nicotest',
-    password: 'test2021'
-})
+    user: 'root',
+    password: 'River015.',
+    database: 'bd_tp_integrador',
+    port: 3306
+ });
 
-conexion.connect((error) => {
-    if (error){ throw error }
-    else { console.log('CONEXION EXITOSA')}
-})
-conexion.end()
+// let conexion = mysql.createConnection({
+//     host: 'localhost',
+//     database: '',
+//     user: 'nicotest',
+//     password: 'test2021'
+// })
+
+// conexion.connect((error) => {
+//     if (error){ throw error }
+//     else { console.log('CONEXION EXITOSA')}
+// })
+// conexion.end()
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -50,14 +58,46 @@ app.get('/hello', (request, response) => {
 })
 
 app.get('/usuarios', (request, response) => {
-    //connexion con mysql
-    //crear la query Select nombre, apellido from Usuarios
-    //ejecutarla
-    response.json(usuarios)
+   
+    connection.connect(function(error){
+    if(error){
+        throw error;
+    }else{
+        console.log('Conexion correcta.');
+    }
+    
+    let consulta ="select nombre,apellido from usuario"
+    connection.query(consulta,function(err,results,fields){
+        if(err) throw err;
+        console.log('¡No hubo errores!');
+        response.json(results)    
+        connection.end();         
+    })
+});
+    // response.json(usuarios)
 })
 
 app.get('/estadisticas', (request, response) => {
-    response.json(descargas)
+    
+    connection.connect(function(error){
+        if(error){
+            throw error;
+        }else{
+            console.log('Conexion correcta.');
+        }
+        
+        let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
+        from descarga as d\
+        inner join encuesta as e\
+        on e.id_descarga=d.id_descarga;"
+        connection.query(encuestasUsuarios,function(err,results,fields){
+            if(err) throw err;
+            console.log('¡No hubo errores!');
+            response.json(results)    
+            connection.end();         
+        })
+    })
+    //response.json(descargas)
 })
 
 app.put('/alta',(request, response) => {

@@ -11,14 +11,14 @@ request.addEventListener("readystatechange", () =>{
     let user_string = ''
     if(request.readyState === 4){
         if(request.status == 200){
-            //const jason = JSON.parse(request.response).users.map(e => e.Nombre + ' ' + e.Apellido)
-            const jason = JSON.parse(request.response).users
+            // const jason = JSON.parse(request.response).users.map(e => e.Nombre + ' ' + e.Apellido)
+            const jason = JSON.parse(request.response)
             
             jason.forEach( e => {
                 user_string += '<div class="unUsuario">'
                 user_string += `
                 <div>
-                    <p>${e.Nombre}<br>${e.Apellido}</p>
+                    <p>${e.nombre}<br>${e.apellido}</p>
                 </div>
                 <div>
                     <i class="fas fa-pencil-alt m-2">
@@ -27,6 +27,7 @@ request.addEventListener("readystatechange", () =>{
                 `
                 user_string +='</div>'
             })
+            console.log(request.response)
             document.getElementById("usuarios").innerHTML = user_string
         }
         else{
