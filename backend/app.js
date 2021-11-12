@@ -1,5 +1,19 @@
 let express = require('express')
+let mysql = require('mysql')
 let app = express()
+
+let conexion = mysql.createConnection({
+    host: 'localhost',
+    database: '',
+    user: 'nicotest',
+    password: 'test2021'
+})
+
+conexion.connect((error) => {
+    if (error){ throw error }
+    else { console.log('CONEXION EXITOSA')}
+})
+conexion.end()
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
