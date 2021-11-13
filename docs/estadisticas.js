@@ -7,6 +7,7 @@ else{
 const request = new XMLHttpRequest()
 const url = "http://localhost:3000/estadisticas"
 request.open('GET', url + localStorage.orden)
+console.log(localStorage.orden)
 request.send()
 
 
