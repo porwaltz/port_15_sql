@@ -1,13 +1,6 @@
-if(localStorage.cambio == '0'){
-    localStorage.setItem('orden', '')
-}
-else{
-    localStorage.setItem('cambio', '0')
-}
 const request = new XMLHttpRequest()
 const url = "http://localhost:3000/estadisticas"
-request.open('GET', url + localStorage.orden)
-console.log(localStorage.orden)
+request.open('GET', url)
 request.send()
 
 
@@ -25,16 +18,16 @@ request.addEventListener("readystatechange", () =>{
                             <a href="estadisticas.html" onclick="ordenar()">Usuario</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar('/resumen')">Resumen</a>
+                            <a href="estadisticas.html" onclick="ordenar()">Resumen</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar('/positivo')">Positivo</a>
+                            <a href="estadisticas.html" onclick="ordenar()">Positivo</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar('/negativo')">Negativo</a>
+                            <a href="estadisticas.html" onclick="ordenar()">Negativo</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar('/puntaje')">Puntaje</a>
+                            <a href="estadisticas.html" onclick="ordenar()">Puntaje</a>
                         </p></div>
                     `
             jason.forEach( e => {
@@ -57,6 +50,5 @@ request.addEventListener("readystatechange", () =>{
 })
 
 const ordenar = (ruta = '') => {
-    localStorage.setItem('cambio','1')
-    localStorage.setItem('orden',ruta)
+    true
 }
