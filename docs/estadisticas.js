@@ -1,6 +1,14 @@
+if(localStorage.ruta == null){
+    localStorage.setItem("ruta", "")
+}
+const ordenar = (ruta = '') => {
+
+    localStorage.setItem("ruta", ruta)
+    console.log(localStorage.ruta)
+}
 const request = new XMLHttpRequest()
 const url = "http://localhost:3000/estadisticas"
-request.open('GET', url)
+request.open('GET', url + localStorage.getItem("ruta"))
 request.send()
 
 
@@ -15,19 +23,19 @@ request.addEventListener("readystatechange", () =>{
             user_string += `
 
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar()">Usuario</a>
+                            <a href="estadisticas.html" onclick="ordenar('/usuario')">Usuario</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar()">Resumen</a>
+                            <a href="estadisticas.html" onclick="ordenar('/resumen')">Resumen</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar()">Positivo</a>
+                            <a href="estadisticas.html" onclick="ordenar('/positivo')">Positivo</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar()">Negativo</a>
+                            <a href="estadisticas.html" onclick="ordenar('/negativo')">Negativo</a>
                         </p></div>
                         <div class="grid-item grid-h"><p>
-                            <a href="estadisticas.html" onclick="ordenar()">Puntaje</a>
+                            <a href="estadisticas.html" onclick="ordenar('/puntaje')">Puntaje</a>
                         </p></div>
                     `
             jason.forEach( e => {
@@ -49,6 +57,3 @@ request.addEventListener("readystatechange", () =>{
     
 })
 
-const ordenar = (ruta = '') => {
-    true
-}

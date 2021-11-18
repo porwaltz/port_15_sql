@@ -1,4 +1,4 @@
-const userList = [];
+/* const userList = [];
 
 let searchBar = document.getElementById("search-field");
 searchBar.addEventListener("keyup", function(event){
@@ -29,4 +29,4 @@ const obtener =()=>{
 
     
 }
-setTimeout(obtener, 1000)
+setTimeout(obtener, 1000) */
