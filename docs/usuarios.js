@@ -1,6 +1,6 @@
 const request = new XMLHttpRequest()
 const url = "http://localhost:3000/usuarios"
-
+localStorage.setItem("busqueda", "")
 
 request.open('GET', url)
 request.send()

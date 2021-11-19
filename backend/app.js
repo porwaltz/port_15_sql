@@ -42,12 +42,16 @@ app.get('/usuarios', (request, response) => {
     });
 })
 
-app.get('/estadisticas', (request, response) => {
-        
-    let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
-    from descarga as d\
-    inner join encuesta as e\
-    on e.id_descarga=d.id_descarga;"
+app.post('/estadisticas', (request, response) => {
+    console.log(request.body)
+    let orden = ''
+    if(request.body.nuevo != '' && request.body.nuevo != null){
+        orden = `where d.usuario_logeado like '%${request.body.nuevo}%'`
+    }
+    let encuestasUsuarios =`select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global
+    from descarga as d
+    inner join encuesta as e
+    on e.id_descarga=d.id_descarga ${orden};`
     connection.query(encuestasUsuarios,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');
@@ -56,13 +60,16 @@ app.get('/estadisticas', (request, response) => {
     })
 })
 
-app.get('/estadisticas/usuario', (request, response) => {
-        
-    let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
-    from descarga as d\
-    inner join encuesta as e\
-    on e.id_descarga=d.id_descarga\
-    order by d.usuario_logeado;"
+app.post('/estadisticas/usuario', (request, response) => {
+    console.log(request.body)
+    let orden = ''
+    if(request.body.nuevo != '' && request.body.nuevo != null){
+        orden = `where d.usuario_logeado like '%${request.body.nuevo}%'`
+    }
+    let encuestasUsuarios =`select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global
+    from descarga as d
+    inner join encuesta as e
+    on e.id_descarga=d.id_descarga ${orden} order by d.usuario_logeado;`
     connection.query(encuestasUsuarios,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');
@@ -72,13 +79,16 @@ app.get('/estadisticas/usuario', (request, response) => {
 //response.json(descargas)
 
 
-app.get('/estadisticas/resumen', (request, response) => {
-        
-    let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
-    from descarga as d\
-    inner join encuesta as e\
-    on e.id_descarga=d.id_descarga\
-    order by e.resumen_descarga;"
+app.post('/estadisticas/resumen', (request, response) => {
+    console.log(request.body.nuevo)
+    let orden = ''
+    if(request.body.nuevo != '' && request.body.nuevo != null){
+        orden = `where d.usuario_logeado like '%${request.body.nuevo}%'`
+    }
+    let encuestasUsuarios =`select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global
+    from descarga as d
+    inner join encuesta as e
+    on e.id_descarga=d.id_descarga ${orden} order by e.resumen_descarga;`
     connection.query(encuestasUsuarios,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');
@@ -87,13 +97,16 @@ app.get('/estadisticas/resumen', (request, response) => {
 })
 //response.json(descargas)
 
-app.get('/estadisticas/positivo', (request, response) => {
-        
-    let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
-    from descarga as d\
-    inner join encuesta as e\
-    on e.id_descarga=d.id_descarga\
-    order by e.resumen_positivo;"
+app.post('/estadisticas/positivo', (request, response) => {
+    console.log(request.body.nuevo)
+    let orden = ''
+    if(request.body.nuevo != '' && request.body.nuevo != null){
+        orden = `where d.usuario_logeado like '%${request.body.nuevo}%'`
+    }
+    let encuestasUsuarios =`select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global
+    from descarga as d
+    inner join encuesta as e
+    on e.id_descarga=d.id_descarga ${orden} order by e.resumen_positivo;`
     connection.query(encuestasUsuarios,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');
@@ -102,13 +115,16 @@ app.get('/estadisticas/positivo', (request, response) => {
 })
 //response.json(descargas)
 
-app.get('/estadisticas/negativo', (request, response) => {
-        
-    let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
-    from descarga as d\
-    inner join encuesta as e\
-    on e.id_descarga=d.id_descarga\
-    order by e.resumen_negativo;"
+app.post('/estadisticas/negativo', (request, response) => {
+    console.log(request.body.nuevo)
+    let orden = ''
+    if(request.body.nuevo != '' && request.body.nuevo != null){
+        orden = `where d.usuario_logeado like '%${request.body.nuevo}%'`
+    }
+    let encuestasUsuarios =`select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global
+    from descarga as d
+    inner join encuesta as e
+    on e.id_descarga=d.id_descarga ${orden} order by e.resumen_negativo;`
     connection.query(encuestasUsuarios,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');
@@ -118,13 +134,16 @@ app.get('/estadisticas/negativo', (request, response) => {
 //response.json(descargas)
 
 
-app.get('/estadisticas/puntaje', (request, response) => {
-        
-    let encuestasUsuarios ="select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global\
-    from descarga as d\
-    inner join encuesta as e\
-    on e.id_descarga=d.id_descarga\
-    order by e.puntaje_global;"
+app.post('/estadisticas/puntaje', (request, response) => {
+    console.log(request.body.nuevo)
+    let orden = ''
+    if(request.body.nuevo != '' && request.body.nuevo != null){
+        orden = `where d.usuario_logeado like '%${request.body.nuevo}%'`
+    }
+    let encuestasUsuarios =`select d.usuario_logeado,e.resumen_descarga,e.resumen_negativo,e.resumen_positivo,e.puntaje_global
+    from descarga as d
+    inner join encuesta as e
+    on e.id_descarga=d.id_descarga ${orden} order by e.puntaje_global;`
     connection.query(encuestasUsuarios,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');

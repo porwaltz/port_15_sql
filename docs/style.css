@@ -125,10 +125,22 @@ input{
     padding: 1rem;
 }
 #searchbar input{
-    margin: auto;
+    height: 2em;
     border: 1px solid var(--primary-header);
-    border-radius: 4px;
-
+    border-radius: 4px 0 0 4px;
+    
+}
+.lupa{
+    vertical-align: middle;
+    height: 2em;
+    border: 1px solid var(--primary-header);
+    border-radius: 0 4px 4px 0;
+    background-color: var(--primary-header);
+    color: var(--primary-white);
+    padding: 0 4px;
+}
+#lupa{
+    vertical-align: middle;
 }
 
 #headerRes{

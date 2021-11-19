@@ -2,14 +2,23 @@ if(localStorage.ruta == null){
     localStorage.setItem("ruta", "")
 }
 const ordenar = (ruta = '') => {
-
     localStorage.setItem("ruta", ruta)
-    console.log(localStorage.ruta)
 }
+
+localStorage.setItem("busqueda", "")
+
+
+document.getElementById('search-field').value = ""
+
+
 const request = new XMLHttpRequest()
 const url = "http://localhost:3000/estadisticas"
-request.open('GET', url + localStorage.getItem("ruta"))
+request.open('POST', url + localStorage.getItem("ruta"))
+request.setRequestHeader("Content-type", "application/json")
 request.send()
+
+
+
 
 
 request.addEventListener("readystatechange", () =>{
@@ -53,7 +62,21 @@ request.addEventListener("readystatechange", () =>{
         else{
             document.getElementById("resultados").innerHTML = "Error " + request.status
         }
+        /* localStorage.setItem("busqueda", "0") */
     }
     
 })
+
+const clicker = () =>{
+    let busqueda = document.getElementById("search-field").value
+    console.log("valor de busqueda: " + busqueda)
+    if(busqueda == '' || busqueda == null){
+        alert("el cuadro de busqueda esta vacio")
+        location.reload()
+        return
+    }
+    else {
+        localStorage.setItem("busqueda", busqueda)
+    }
+}
 

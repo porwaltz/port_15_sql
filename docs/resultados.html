@@ -18,19 +18,31 @@
                 <a href="index.html" class="">Alta</a>
             </li>
             <li class="m-2" >
-                <a href="usuarios.html"  class="fw-bold">Usuarios</a>
+                <a href="usuarios.html"  class="">Usuarios</a>
             </li>
             <li class="m-2" >
-                <a href="estadisticas.html" class="">Estadisticas</a>
+                <a href="estadisticas.html" class="fw-bold">Estadisticas</a>
             </li>
         </ul>
     </header>
     <section class="m-3">
-        <h2 class="p-2">Usuarios registrados <i class="fas fa-clipboard-list"></i></h2>
-        <div id="usuarios">
+        <h2 class="p-2">Encuestas de usuarios <i class="fas fa-database"></i></h2>
+        <div id="estadísticas">
+            <div id="searchbar">
+                <input type="text" name="search-field" id="search-field" placeholder="ingrese un usuario" value ="">
+                <a href="" onclick="clicker()" class="lupa"><i class="fas fa-search" id="lupa"></i></a>
+            </div>
+            <div id="headerRes">
+                <p class="fs-4">Resultados</p> 
+                <p id="total"></p>
+            </div>
+            <div id="resultados" class="m-4 grid-container">
+
+            </div>
+
         </div>
     </section>
 
-    <script src="usuarios.js"></script>
-</body>
+    <script src="busqueda.js"></script>
+</body> 
 </html>

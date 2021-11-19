@@ -1,3 +1,5 @@
+localStorage.setItem("busqueda", "")
+
 const alta = () => {
     const nombre = document.getElementById("nombre").value
     const apellido = document.getElementById("apellido").value
