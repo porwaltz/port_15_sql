@@ -1,15 +1,17 @@
 let express = require('express')
 let mysql = require('mysql')
+var cors = require('cors')
 let app = express()
 
 let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '123Us456$',
+    password: 'River015.',
     database: 'bd_tp_integrador',
     port: 3306
  })
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -32,7 +34,7 @@ connection.connect(function(error){
 
 app.get('/usuarios', (request, response) => {
     
-    let consulta ="select nombre,apellido from usuario"
+    let consulta ="select id_usuario,nombre,apellido from usuario"
     connection.query(consulta,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');
@@ -41,6 +43,37 @@ app.get('/usuarios', (request, response) => {
         })
     });
 })
+
+app.post('/usuarioPorId', (request, response) => {
+    
+    let consulta =`select id_usuario,nombre,apellido from usuario where id_usuario=${request.body.id_usuario}`
+    connection.query(consulta,function(err,results,fields){
+        if(err) throw err;
+        console.log('¡No hubo errores!');
+        response.json(results) 
+        //connection.end()   
+        })
+    });
+
+app.delete('/usuarioEliminar', (request, response) => {
+    
+    let  deleteFromUsuario=`delete from usuario where id_usuario=${request.body.userEliminar}`
+    let  deleteFromDescarga=`delete from descarga where id_usuario=${request.body.userEliminar}`
+    connection.query(deleteFromDescarga,function(err,results,fields){
+        if(err) throw err;
+        console.log('¡Salio todo bien de descarga!');
+        // response.json(results) 
+        //connection.end()   
+        })
+    connection.query(deleteFromUsuario,function(err,results,fields){
+        if(err) throw err;
+        console.log('¡Salio todo bien de usuario!');
+        // response.json(results) 
+            //connection.end()   
+        })
+    console.log('Salio todo piola')
+    response.send('Salio todo piola')
+    });
 
 app.post('/estadisticas', (request, response) => {
     console.log(request.body)
