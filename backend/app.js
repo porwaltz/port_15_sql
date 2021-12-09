@@ -6,7 +6,7 @@ let app = express()
 let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'River015.',
+    password: '1122334410',
     database: 'bd_tp_integrador',
     port: 3306
  })
@@ -52,8 +52,8 @@ app.post('/usuarioPorId', (request, response) => {
         console.log('¡No hubo errores!');
         response.json(results) 
         //connection.end()   
-        })
-    });
+    })
+});
 
 app.delete('/usuarioEliminar', (request, response) => {
     
@@ -64,16 +64,16 @@ app.delete('/usuarioEliminar', (request, response) => {
         console.log('¡Salio todo bien de descarga!');
         // response.json(results) 
         //connection.end()   
-        })
+    })
     connection.query(deleteFromUsuario,function(err,results,fields){
         if(err) throw err;
         console.log('¡Salio todo bien de usuario!');
         // response.json(results) 
             //connection.end()   
-        })
+    })
     console.log('Salio todo piola')
-    response.send('Salio todo piola')
-    });
+    response.end()
+});
 
 app.post('/estadisticas', (request, response) => {
     console.log(request.body)
