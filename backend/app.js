@@ -1,9 +1,10 @@
 let express = require('express')
 let mysql = require('mysql')
-var cors = require('cors')
+//var cors = require('cors')
 let app = express()
 
 let connection = mysql.createConnection({
+    multipleStatements: true,
     host: 'localhost',
     user: 'root',
     password: '1122334410',
@@ -11,7 +12,7 @@ let connection = mysql.createConnection({
     port: 3306
  })
 
-app.use(cors())
+//app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -57,14 +58,15 @@ app.post('/usuarioPorId', (request, response) => {
 
 app.delete('/usuarioEliminar', (request, response) => {
     
-    let  deleteFromUsuario=`delete from usuario where id_usuario=${request.body.userEliminar}`
-    let  deleteFromDescarga=`delete from descarga where id_usuario=${request.body.userEliminar}`
-    connection.query(deleteFromDescarga,function(err,results,fields){
+    let  deleteFromUsuario=`delete from usuario where id_usuario=${request.body.userEliminar};`
+    //let  deleteFromDescarga=`delete from descarga where id_usuario=${request.body.userEliminar}`
+    //deleteFromUsuario +=`delete from descarga where id_usuario=${request.body.userEliminar}`
+    /* connection.query(deleteFromDescarga,function(err,results,fields){
         if(err) throw err;
         console.log('¡Salio todo bien de descarga!');
         // response.json(results) 
         //connection.end()   
-    })
+    }) */
     connection.query(deleteFromUsuario,function(err,results,fields){
         if(err) throw err;
         console.log('¡Salio todo bien de usuario!');
