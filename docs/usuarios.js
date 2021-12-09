@@ -14,14 +14,15 @@ request.addEventListener("readystatechange", () =>{
             const jason = JSON.parse(request.response)
             
             jason.forEach( e => {
-                user_string += '<div class="unUsuario">'
+                // userId=e.id_usuario 
+                user_string += `<div class="unUsuario ">`
                 user_string += `
                 <div>
                     <p>${e.nombre}<br>${e.apellido}</p>
                 </div>
                 <div>
-                    <i class="fas fa-pencil-alt m-2">
-                    </i><i class="fas fa-trash m-2"></i>
+                    <i class="fas fa-pencil-alt m-2" onClick="editarUsuario(${e.id_usuario})">
+                    </i><i class="fas fa-trash m-2" onClick="eliminarUsuario(${e.id_usuario})"></i>
                 </div>
                 `
                 user_string +='</div>'
@@ -35,3 +36,23 @@ request.addEventListener("readystatechange", () =>{
     }
     
 })
+
+const editarUsuario=(id_usuario)=>{
+    console.log("Voy a editar al usuario: "+id_usuario)
+
+    // window.location.href = "./index.html";
+    
+}
+
+const eliminarUsuario= async (id_usuario)=>{
+    console.log("Voy a editar al usuario: "+id_usuario)
+
+    const requestEliminarUser = new XMLHttpRequest()
+    const urlEliminar = "http://localhost:3000/usuarioEliminar"
+
+    requestEliminarUser.open('DELETE', urlEliminar)
+    requestEliminarUser.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+    let body = JSON.stringify({ userEliminar : id_usuario })
+    await requestEliminarUser.send(body)
+    // location.reload()
+}
