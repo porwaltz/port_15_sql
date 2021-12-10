@@ -44,15 +44,33 @@ const editarUsuario=(id_usuario)=>{
     
 }
 
-const eliminarUsuario= async (id_usuario)=>{
-    console.log("Voy a editar al usuario: "+id_usuario)
+const eliminarUsuario = (id_usuario)=>{
+    console.log("Voy a editar al usuario: "+ id_usuario)
 
     const requestEliminarUser = new XMLHttpRequest()
     const urlEliminar = "http://localhost:3000/usuarioEliminar"
 
-    requestEliminarUser.open('DELETE', urlEliminar)
+    requestEliminarUser.open('PUT', urlEliminar)
     requestEliminarUser.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
     let body = JSON.stringify({ userEliminar : id_usuario })
-    await requestEliminarUser.send(body)
-    // location.reload()
+    console.log(body)
+    requestEliminarUser.send(body)
+    requestEliminarUser.addEventListener("readystatechange", () =>{
+        if(requestEliminarUser.readyState === 4){
+            console.log(requestEliminarUser.status)
+            if(requestEliminarUser.status == 200){
+                console.log("se hizo todo")
+                location.reload()
+            }
+        }
+    })
 }
+
+
+
+/*     requestEliminarUser.onreadystatechange=()=>{
+        if(requestEliminarUser.readyState==XMLHttpRequest.DONE){
+            console.log("se hizo todo")
+            //location.reload()
+        }
+    }    */

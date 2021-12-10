@@ -7,7 +7,8 @@ let connection = mysql.createConnection({
     multipleStatements: true,
     host: 'localhost',
     user: 'root',
-    password: 'River015.',
+    password: '1122334410',
+    //password: 'River015.',
     database: 'bd_tp_integrador',
     port: 3306
  })
@@ -35,7 +36,7 @@ connection.connect(function(error){
 
 app.get('/usuarios', (request, response) => {
     
-    let consulta ="select id_usuario,nombre,apellido from usuario"
+    let consulta ="select id_usuario,nombre,apellido from usuario where activo = 1"
     connection.query(consulta,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');
@@ -56,30 +57,15 @@ app.post('/usuarioPorId', (request, response) => {
     })
 });
 
-app.delete('/usuarioEliminar', (request, response) => {
+app.put('/usuarioEliminar', (request, response) => {
+    console.log("entro al metodo")
+    let  deleteFromUsuario=`update usuario set activo = 0 where id_usuario = ${request.body.userEliminar};`
     
-    let desactivarRestriccion = `SET FOREIGN_KEY_CHECKS=0;`
-    let  deleteFromUsuario=`delete from usuario where id_usuario=${request.body.userEliminar};`
-    let activarRestriccion =`SET FOREIGN_KEY_CHECKS=1;`
-    //let  deleteFromDescarga=`delete from descarga where id_usuario=${request.body.userEliminar}`
-    //deleteFromUsuario +=`delete from descarga where id_usuario=${request.body.userEliminar}`
-    /* connection.query(deleteFromDescarga,function(err,results,fields){
-        if(err) throw err;
-        console.log('¡Salio todo bien de descarga!');
-        // response.json(results) 
-        //connection.end()   
-    }) */
-    connection.query(desactivarRestriccion,function(err,results,fields){
-        if(err) throw err;
-        console.log('¡Se quito la restriccion de la foreign key!');
-        // response.json(results) 
-            //connection.end()   
-    })
     connection.query(deleteFromUsuario,function(err,results,fields){
         if(err) throw err;
         console.log('¡Salio todo bien de usuario!');
         // response.json(results) 
-            //connection.end()   
+        //connection.end()   
     })
     connection.query(activarRestriccion,function(err,results,fields){
         if(err) throw err;
