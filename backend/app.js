@@ -7,7 +7,7 @@ let connection = mysql.createConnection({
     multipleStatements: true,
     host: 'localhost',
     user: 'root',
-    password: '1122334410',
+    password: 'River015.',
     database: 'bd_tp_integrador',
     port: 3306
  })
@@ -58,7 +58,9 @@ app.post('/usuarioPorId', (request, response) => {
 
 app.delete('/usuarioEliminar', (request, response) => {
     
+    let desactivarRestriccion = `SET FOREIGN_KEY_CHECKS=0;`
     let  deleteFromUsuario=`delete from usuario where id_usuario=${request.body.userEliminar};`
+    let activarRestriccion =`SET FOREIGN_KEY_CHECKS=1;`
     //let  deleteFromDescarga=`delete from descarga where id_usuario=${request.body.userEliminar}`
     //deleteFromUsuario +=`delete from descarga where id_usuario=${request.body.userEliminar}`
     /* connection.query(deleteFromDescarga,function(err,results,fields){
@@ -67,9 +69,21 @@ app.delete('/usuarioEliminar', (request, response) => {
         // response.json(results) 
         //connection.end()   
     }) */
+    connection.query(desactivarRestriccion,function(err,results,fields){
+        if(err) throw err;
+        console.log('¡Se quito la restriccion de la foreign key!');
+        // response.json(results) 
+            //connection.end()   
+    })
     connection.query(deleteFromUsuario,function(err,results,fields){
         if(err) throw err;
         console.log('¡Salio todo bien de usuario!');
+        // response.json(results) 
+            //connection.end()   
+    })
+    connection.query(activarRestriccion,function(err,results,fields){
+        if(err) throw err;
+        console.log('¡Se activo la restriccion de la foreign key!');
         // response.json(results) 
             //connection.end()   
     })
