@@ -48,7 +48,7 @@ app.get('/usuarios', (request, response) => {
 
 app.post('/usuarioPorId', (request, response) => {
     
-    let consulta =`select id_usuario,nombre,apellido from usuario where id_usuario=${request.body.id_usuario}`
+    let consulta =`select fec_nacimiento,nombre,apellido from usuario where id_usuario=${request.body.el_id}`
     connection.query(consulta,function(err,results,fields){
         if(err) throw err;
         console.log('¡No hubo errores!');

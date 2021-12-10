@@ -38,8 +38,9 @@ request.addEventListener("readystatechange", () =>{
 })
 
 const editarUsuario=(id_usuario)=>{
-    console.log("Voy a editar al usuario: "+id_usuario)
-
+    localStorage.setItem("usuarioEditar", id_usuario)
+    console.log("Voy a editar al usuario: "+ localStorage.getItem("usuarioEditar"))
+    location.href="./modificar.html"
     // window.location.href = "./index.html";
     
 }
