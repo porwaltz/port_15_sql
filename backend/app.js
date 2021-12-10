@@ -67,12 +67,6 @@ app.put('/usuarioEliminar', (request, response) => {
         // response.json(results) 
         //connection.end()   
     })
-    connection.query(activarRestriccion,function(err,results,fields){
-        if(err) throw err;
-        console.log('¡Se activo la restriccion de la foreign key!');
-        // response.json(results) 
-            //connection.end()   
-    })
     console.log('Salio todo piola')
     response.end()
 });
